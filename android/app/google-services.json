@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "902629882986",
+    "project_id": "showtime-2762b",
+    "storage_bucket": "showtime-2762b.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:902629882986:android:ce9ab5f1613bad5f191e13",
+        "android_client_info": {
+          "package_name": "com.showtime"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAQ_FmMMOcZiRerQvryPgKwyBbn9lWfBMc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
