@@ -8,11 +8,11 @@ import {
   Text,
   View,
 } from 'react-native';
-import React, {useEffect, useState} from 'react';
-import {scale} from 'react-native-size-matters';
+import React, { useEffect, useState } from 'react';
+import { scale } from 'react-native-size-matters';
 import AntDesign from 'react-native-vector-icons/AntDesign';
 import MovieCard from '../../components/MovieCard/MovieCard';
-import {COLORS, SPACING} from '../../theme/theme';
+import { COLORS, SPACING } from '../../theme/theme';
 import {
   upcomingMovies,
   nowPlayingMovies,
@@ -20,14 +20,14 @@ import {
   popularMovies,
 } from '../../api/apiCalls';
 import InputHeader from '../../components/InputHeader';
-import {useNavigation} from '@react-navigation/native';
+import { useNavigation } from '@react-navigation/native';
 import CategoryHeader from '../../components/CategoryHeader';
 import SubMovieCard from '../../components/SubMovieCard';
 import axios from 'axios';
 
-const {width, height} = Dimensions.get('window');
+const { width, height } = Dimensions.get('window');
 
-const Home = ({}) => {
+const Home = ({ }) => {
   const navigation = useNavigation();
 
   const [nowPlayingMoviesList, setNowPlayingMoviesList] = useState([]);
@@ -61,14 +61,14 @@ const Home = ({}) => {
     }
   };
 
-  const renderUpcomingMoviesDataList = ({item, index}) => {
+  const renderUpcomingMoviesDataList = ({ item, index }) => {
     return (
       <SubMovieCard
         title={item.original_title}
         imagePath={baseImagePath('w342', item.poster_path)}
         shouldMarinatedAtEnd={true}
         cardFunction={() => {
-          navigation.navigate('MovieDetail', {item: item});
+          navigation.navigate('MovieDetail', { item: item });
         }}
         cardWidth={width / 3}
         isFirst={index == 0}
@@ -77,14 +77,14 @@ const Home = ({}) => {
     );
   };
 
-  const renderPopularMoviesList = ({item, index}) => {
+  const renderPopularMoviesList = ({ item, index }) => {
     return (
       <SubMovieCard
         title={item.original_title}
         imagePath={baseImagePath('w342', item.poster_path)}
         shouldMarinatedAtEnd={true}
         cardFunction={() => {
-          navigation.navigate('MovieDetail', {item: item});
+          navigation.navigate('MovieDetail', { item: item });
         }}
         cardWidth={width / 3}
         isFirst={index == 0}
@@ -93,14 +93,14 @@ const Home = ({}) => {
     );
   };
 
-  const renderNowPlayingMoviesList = ({item, index}) => {
+  const renderNowPlayingMoviesList = ({ item, index }) => {
     return (
       <MovieCard
         title={item.original_title}
         imagePath={baseImagePath('w780', item.poster_path)}
         shouldMarinatedAtEnd={true}
         cardFunction={() => {
-          navigation.navigate('MovieDetail', {item: item});
+          navigation.navigate('MovieDetail', { item: item });
         }}
         cardWidth={width * 0.7}
         isFirst={index == 0}
@@ -183,12 +183,13 @@ const Home = ({}) => {
       </View>
 
       <CategoryHeader title={'Now Playing'} />
-      {/* You may need to add FlatList for nowPlayingMoviesList here */}
+      {/*  may need to add FlatList for nowPlayingMoviesList here */}
       <FlatList
         data={nowPlayingMoviesList}
         bounce={false}
         snapToInterval={width * 0.7 + SPACING.space_36}
         horizontal
+        showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.containerGap36}
         renderItem={renderNowPlayingMoviesList}
       />
@@ -198,6 +199,7 @@ const Home = ({}) => {
         data={popularMoviesList}
         bounce={false}
         horizontal
+        showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.containerGap36}
         renderItem={renderPopularMoviesList}
       />
@@ -208,6 +210,7 @@ const Home = ({}) => {
         data={upcomingMoviesList}
         bounce={false}
         horizontal
+        showsHorizontalScrollIndicator={false}
         contentContainerStyle={styles.containerGap36}
         renderItem={renderUpcomingMoviesDataList}
       />

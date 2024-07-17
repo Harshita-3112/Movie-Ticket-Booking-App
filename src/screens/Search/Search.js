@@ -1,22 +1,22 @@
-import {Dimensions, FlatList, StyleSheet, Text, View} from 'react-native';
-import React, {useState} from 'react';
-import {COLORS, SPACING} from '../../theme/theme';
+import { Dimensions, FlatList, StyleSheet, Text, View } from 'react-native';
+import React, { useState } from 'react';
+import { COLORS, SPACING } from '../../theme/theme';
 import InputHeader from '../../components/InputHeader';
-import {baseImagePath, searchMovies} from '../../api/apiCalls';
+import { baseImagePath, searchMovies } from '../../api/apiCalls';
 import SubMovieCard from '../../components/SubMovieCard';
 
-const {width, height} = Dimensions.get('screen');
+const { width, height } = Dimensions.get('screen');
 const Search = () => {
   const [searchList, setSearchList] = useState([]);
 
-  const renderSearchList = ({item, index}) => {
+  const renderSearchList = ({ item, index }) => {
     <SubMovieCard
       title={item.original_title}
       imagePath={baseImagePath('w342', item.poster_path)}
       shouldMarinatedAtEnd={false}
       shouldMarginatedAround={true}
       cardFunction={() => {
-        navigation.navigate('MovieDetail', {movieid: item.id});
+        navigation.navigate('MovieDetail', { movieid: item.id });
       }}
       cardWidth={width / 2 - SPACING.space_12 * 2}
     />;
@@ -40,6 +40,7 @@ const Search = () => {
         data={searchList}
         bounce={false}
         numcolumns={2}
+        showsVerticalScrollIndicator={false}
         contentContainerStyle={styles.centerContainer}
         renderItem={renderSearchList}
         ListHeaderComponent={
